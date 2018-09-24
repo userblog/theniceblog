@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  {% include '_header.html' %}
+{% endblock %}
+
+{% block content %}
+  <section class='main'>
+  	<div class='post'>
+  	<h1>Новый пост</h1>
+        <form method='POST' action="{{ url_for('add_post') }}" id='add_post' class='comment-form__form'>
+          {{ form.csrf_token }}
+          {{ form.header(class='comment-form__text', placeholder='Header') }}
+          {% if form.errors.header %}
+            {% for error in form.errors.header %}
+              <div style="margin-top: .4em; color: red; font-size: .8em">{{ error }}</div>
+            {% endfor %}
+          {% endif %}
+          {{ form.text(rows='6', class='comment-form__text', placeholder='Text', id='editor') }}
+          {% if form.errors.text %}
+            {% for error in form.errors.text %}
+              <div style="margin-top: .4em; color: red; font-size: .8em">{{ error }}</div>
+            {% endfor %}
+          {% endif %}
+          
+          <div class='add_com_block'>{{ form.add_comment(class='check_add_comment') }} {{ form.add_comment.label(class='add_comment_label') }}</div>
+          <div>{{ form.submit(class='comment-form__btn') }}</div>
+        </form>
+      </div>
+    </section>
+{% endblock %}

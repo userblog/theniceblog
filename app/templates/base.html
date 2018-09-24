@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+	<title>theniceblog | home</title>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link href='{{ url_for("static", filename="style.css") }}' rel='stylesheet'>
+    <link href='{{ url_for("static", filename="normolize.css") }}' rel='stylesheet'>
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}"/>
+   
+  </head>
+  <body>
+   <div class='wrapper'>
+    {% block header %}
+    
+    {% endblock %}
+    {% block content %}
+      
+    {% endblock %}
+    </div>
+    {{ moment.include_jquery(local_js=('/static/jquery.min.js')) }}
+    {{ moment.include_moment(local_js=('/static/moment-with-locales.min.js')) }}
+    {{ moment.lang("ru") }}
+   
+   <script type="text/javascript">
+     if (document.getElementById('block_id')) { 
+   	setTimeout(function(){$('#block_id').fadeOut('fast')},3500);  //30000 = 30 секунд
+            }
+        </script>
+  </body>
+</html>
+  

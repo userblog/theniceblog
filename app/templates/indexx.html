@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  {% include '_header.html' %}
+{% endblock %}
+
+{% block content %}
+  <section class='main'>
+      <div class='post' id='post'>
+        {% for posts in post.items %}
+        <h1 class='post__header'>
+          {{ posts.header }}
+        </h1>
+        <p class='post__text'>
+          {{ posts.text|truncate(240) }}
+        </p>
+        <a href="{{ url_for('post', id=posts.id, _anchor='post') }}" class='link__post-next'>read more...</a>
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('edit_post', id=posts.id, _anchor='edit_post') }}" class='link__post-next link-edit'>Edit</a>
+        {% endif %}
+        <div class='post__text-info'>
+          <span class='post__info-date'>{{ moment(posts.date).fromNow() }} by {{ posts.user.username }}</span>
+        </div>
+      {% endfor %}
+		{% if post.has_prev %}
+		  <a style='color:#00cc99;' class='paginate left' href="{{ url_for('index', page=post.prev_num, _anchor='post') }}">&lt;&lt; Prev</a>
+		{% else %}
+		  <span class='disable left'>&lt;&lt; Prev</span>
+		{% endif %}
+		{% if post.has_next %}
+		  <a style='color:#00cc99;' class='paginate right' href="{{ url_for('index', page=post.next_num, _anchor='post') }}">Next &gt;&gt;</a>
+		{% else %}
+		  <span class='disable right'>Next &gt;&gt;</span>
+		{% endif %}
+
+      
+      </div>
+    </section>
+{% endblock %}

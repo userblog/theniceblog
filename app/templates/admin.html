@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  {% include '_header.html' %}
+{% endblock %}
+
+{% block content %}
+  <section class='main'>
+      <div class='post' id='post'>
+        {% for post in posts.items %}
+        <h3 class='post__header'>
+          <a style='color: black;' href="{{ url_for('post', id=post.id, _anchor='post') }}">{{ post.header }} </a>
+          
+        </h3>
+          <div class='dop_func admin_line'>
+          <a class='edit_btn' href="{{ url_for('edit_post', id=post.id, _anchor='edit_post') }}">Edit</a>
+          <a class='del_btn' href="{{ url_for('delite', id=post.id) }}">Delite</a>
+          <div class='com_views'>
+            <img class='views' src="{{ url_for('static', filename='images/fi-eye.svg') }}">
+            <span class='views_text'>{{ post.views }}</span>
+            <img class='com' src="{{ url_for('static', filename='images/fi-comment.svg') }}">
+            <span class='com_text'><a style='color:black;' href="{{ url_for('post', id=post.id, _anchor='comment-text') }}">{{ comment_ct(post.id) }}</a></span>
+          </div>
+        </div>
+      {% endfor %}
+      {% if posts.has_prev %}
+		  <a style='color:#00cc99;' class='paginate left' href="{{ url_for('admin', page=posts.prev_num, _anchor='post') }}">&lt;&lt; Prev</a>
+		{% else %}
+		  <span class='disable left'>&lt;&lt; Prev</span>
+		{% endif %}
+		{% if posts.has_next %}
+		  <a style='color:#00cc99;' class='paginate right' href="{{ url_for('admin', page=posts.next_num, _anchor='post') }}">Next &gt;&gt;</a>
+		{% else %}
+		  <span class='disable right'>Next &gt;&gt;</span>
+		{% endif %}
+      </div>
+    </section>
+{% endblock %}
