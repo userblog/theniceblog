@@ -17,5 +17,7 @@ class Config(object):
 	POSTS_PER_PAGE = 2
 	ADMIN_PER_PAGE = 2
 	
+	CKEDITOR_PKG_TYPE = 'basic'
+	
 	
     

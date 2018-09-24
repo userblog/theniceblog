@@ -27,5 +27,7 @@
           <div>{{ form.submit(class='comment-form__btn') }}</div>
         </form>
       </div>
+      {{ ckeditor.load() }}
+	  {{ ckeditor.config(name='text') }}
     </section>
 {% endblock %}

@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 from flask_wtf import FlaskForm
+from wtforms import fields, widgets
 from wtforms import TextAreaField, StringField, PasswordField, SubmitField, HiddenField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, ValidationError
 from app.models import User
+from flask_ckeditor import CKEditorField
 
 class RegistrationForm(FlaskForm):
 	username = StringField('Ваше имя', validators=[DataRequired(message="Это поле обязательно для заполнения")])
@@ -24,11 +26,10 @@ class LoginForm(FlaskForm):
 	email = StringField('Электронная почта', validators=[DataRequired(message="Это поле обязательно для заполнения"), Email(message="Неверный email")])
 	password = PasswordField('Пароль', validators=[DataRequired(message="Это поле обязательно для заполнения")])
 	submit = SubmitField('Войти')
-	
-	
+
 class PostForm(FlaskForm):
 	header = StringField('Заголовок', validators=[DataRequired(message="Это поле обязательно для заполнения")])
-	text = TextAreaField('Текст', validators=[DataRequired(message="Это поле обязательно для заполнения")])
+	text = CKEditorField('Текст', validators=[DataRequired(message="Это поле обязательно для заполнения")])
 	add_comment = BooleanField(' разрешить добовлять комментарии')
 	submit = SubmitField('Опубликовать', default='True')
 

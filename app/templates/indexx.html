@@ -12,7 +12,7 @@
           {{ posts.header }}
         </h1>
         <p class='post__text'>
-          {{ posts.text|truncate(240) }}
+          {{ posts.text|truncate(240)|safe }}
         </p>
         <a href="{{ url_for('post', id=posts.id, _anchor='post') }}" class='link__post-next'>read more...</a>
         {% if current_user.is_authenticated %}
