@@ -8,9 +8,9 @@
   <section class='main'>
       <div class='post' id='post'>
        
-        <h1 class='post__header'>
+        <h2 class='post__header'>
           {{ p.header }}
-        </h1>
+        </h2>
         <p class='post__text'>
           {{ p.text|safe }}
         </p>
@@ -48,7 +48,7 @@
         <h2 class='comment-logo'>Комментарии</h2>
         {% for comment in comments %}
         <div class='comment'>
-          <span class='comment__name'>{{ comment.username }}{% if current_user.is_authenticated %}<a style='color: blue;font-size:.7em; float: right;' href="{{ url_for('del_comment', id=comment.id) }}">Удалить комментарий</a>{% endif %}</span>
+          <span class='comment__name'>{{ comment.username }}{% if current_user.is_authenticated %}<a style='color: #00cc99;font-size:.7em; float: right;' href="{{ url_for('del_comment', id=comment.id) }}">Удалить комментарий</a>{% endif %}</span>
           <p class='comment__text' id='comment-text'>
             {{ comment.text }}
           </p>

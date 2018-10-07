@@ -40,7 +40,7 @@ class EditPostForm(FlaskForm):
 	submit = SubmitField('Изменить')
 
 class CommentForm(FlaskForm):
-	username = StringField('Ваше имя', validators=[DataRequired(message="Это поле обязательно для заполнения")])
+	username = StringField('Ваше имя', validators=[DataRequired(message="Это поле обязательно для заполнения"), Length(min=3, message="Имя должно содержать минимум 3 символа")])
 	text = TextAreaField('Текст', validators=[DataRequired(message="Это поле обязательно для заполнения")])
 	post_id = HiddenField()
 	submit = SubmitField('Добавить')

@@ -145,6 +145,9 @@ textarea[placeholder] {
 .post {
 	width: 70.215053763440862%;
 	}
+.post__header {
+	font-weight: 500;
+	}
 .post__text {
 	line-height: 1.5em;
 	letter-spacing: 0;

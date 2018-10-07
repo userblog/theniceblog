@@ -1,0 +1,6 @@
+*.pyc
+/app.db
+/init_db.py
+/add_db_date.py
+/__pycache__/*
+/app/__pycache__/*

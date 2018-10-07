@@ -10,9 +10,9 @@
       <div class='post' id='post'>
       {% if result %}
         {% for results in result %}
-        <h1 class='post__header'>
+        <h2 class='post__header'>
           {{ results.header }}
-        </h1>
+        </h2>
         <p class='post__text'>
           {{ results.text|truncate(240) }}
         </p>
