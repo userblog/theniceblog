@@ -22,17 +22,8 @@
           <span class='post__info-date'>{{ moment(posts.date).fromNow() }} by {{ posts.user.username }}</span>
         </div>
       {% endfor %}
-		{% if post.has_prev %}
-		  <a style='color:#00cc99;' class='paginate left' href="{{ url_for('index', page=post.prev_num, _anchor='post') }}">&lt;&lt; Prev</a>
-		{% else %}
-		  <span class='disable left'>&lt;&lt; Prev</span>
-		{% endif %}
-		{% if post.has_next %}
-		  <a style='color:#00cc99;' class='paginate right' href="{{ url_for('index', page=post.next_num, _anchor='post') }}">Next &gt;&gt;</a>
-		{% else %}
-		  <span class='disable right'>Next &gt;&gt;</span>
-		{% endif %}
-
+      
+      {% include '_paginate.html' %}
       
       </div>
     </section>

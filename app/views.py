@@ -99,9 +99,9 @@ def search():
 @login_required
 def admin():
 	page = request.args.get('page', 1, type=int)
-	posts = Post.query.order_by(Post.date.desc()).paginate(page, app.config['ADMIN_PER_PAGE'], error_out=False)
+	post = Post.query.order_by(Post.date.desc()).paginate(page, app.config['ADMIN_PER_PAGE'], error_out=False)
 	comment_count = Comment.query.filter(Comment.post_id==Post.id).count()
-	return render_template('admin.html', posts=posts, com_ct=comment_count)
+	return render_template('admin.html', post=post, com_ct=comment_count)
 
 @app.context_processor
 def utility_processor():
