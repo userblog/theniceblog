@@ -1,3 +1,3 @@
 # theniceblog
 
-Проект доя изучения Python, Flask
+Проект для изучения Python, Flask
